@@ -81,10 +81,12 @@ title = "NowUI Pro Demo"
     startLevel = 2
 
 [params]
+# The name of the main author
 author = "Bruno Amaral"
-defaultAuthor = "authors/bruno-amaral"
-#set the default site thumbnail
+defaultAuthor = "authors/default-author"
+# Set the default site thumbnail
 defaultImage = ""
+# Google 
 googleSiteVerification = ""
 googleTagManager = ""
 headerPhoto = ""
@@ -168,7 +170,7 @@ algoliaapikey = ""
 algoliaappid = ""
 algoliaindex = ""
 description = "Demo for NowUI Pro."
-subtitle = "default subtitle for english"
+subtitle = "Full featured Bootstrap Theme for Hugo site generator"
 
 # [Languages.pt]
 # weight = 2
