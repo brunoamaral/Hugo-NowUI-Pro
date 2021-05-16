@@ -1,5 +1,10 @@
 
-Last updated: 2021-05-16T16:02:43+0100
+Last updated: 2021-05-16T16:37:13+0100
+
+# Quickstart
+
+`cd exampleSite; hugo server --themesDir ../..`
+
 
 ## Asides / Pullquotes
 
