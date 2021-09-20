@@ -43,7 +43,11 @@
                 <div class="col-md-3">
                     <h5>{{ i18n "follow" | upper }}</h5>
                     <ul class="social-buttons">
-                    	{{ $author := ($.Site.GetPage $.Site.Params.defaultAuthor) }}
+                    	{{ $author := "" }}
+                        {{ with .Site.Params.defaultAuthor }}
+                            {{- $author = .Site.GetPage (printf .Site.Params.defaultAuthor ) -}}
+                        {{ end }}
+                        {{ if ne $author "" }}
                     	{{ with $author.Params.profiles }}
                     	{{ $map := (index $author.Params.profiles ) }} {{$map}}
                     	{{ range $key, $val := $author.Params.profiles }}
@@ -54,13 +58,14 @@
                     		</li>
                     		{{ end }}
                     	{{ end }}
+                        {{ end }}
                     </ul>
                 </div>
             </div>
         </div>
         <hr>
         <div class="copyright">
-        	Copyright &copy; {{ now.Format "2006"}}; {{ $author.Params.name }}
+        	Copyright &copy; {{ now.Format "2006"}}; {{ if ne $author "" }}{{ $author.Params.name }}{{ end }}
         </div>
     </div>
 </footer>

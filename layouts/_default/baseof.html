@@ -1,5 +1,8 @@
 {{- $siteLogo := printf "%s%s" $.Site.BaseURL $.Site.Params.logo -}}
-{{- $author := .Site.GetPage (printf .Site.Params.defaultAuthor ) -}}
+{{ $author := "" }}
+{{ with .Site.Params.defaultAuthor }}
+{{- $author = .Site.GetPage (printf .Site.Params.defaultAuthor ) -}}
+{{ end }}
 {{- with .Params.authors -}}
 	{{ $ref := (printf "authors/%s" (index . 0)) }}
 	{{ $author = ($.Site.GetPage (printf $ref)) }}
@@ -97,12 +100,16 @@
 	  {{- end -}}
 	{{- end -}}{{- end -}}
 	{{- if .IsPage -}}
+	{{ if ne $author "" }}
 	{{ with $author.Params.name }}
 		<meta name="author" content="{{ . }}">
 	{{ end }}
+	
+
 	{{- with $author.Params.profiles.facebook -}}
 	<meta property="article:author" content="{{- . -}}" />
 	<meta property="article:publisher" content="{{- . -}}" />
+	{{ end }}
 	{{ end }}
 	<meta property="article:section" content="{{- .Section -}}" />
 	{{- with .Params.tags -}}{{- range first 6 . -}}
@@ -111,7 +118,7 @@
 	{{ end }}
 
 		<meta property="og:site_name" content="{{ .Site.Title }} {{ i18n "by" }} {{ $.Site.Params.author }}" />
-		<meta name="twitter:site" content="{{- with $author.Params.twitterusername -}}{{.}}{{end}}"/>
+		{{ if ne $author "" }}<meta name="twitter:site" content="{{- with $author.Params.twitterusername -}}{{.}}{{end}}"/>{{end}}
 		<meta name="twitter:title" content="{{- .Title -}}"/>
 		<meta name="twitter:card" content="summary_large_image"/>
 	{{- $headerImage := .Resources.GetMatch "header" -}}
@@ -144,10 +151,14 @@
 		{{- if ne .Permalink $permalink -}}<meta property="og:see_also" content="{{- .Permalink -}}" />{{- end -}}
 	  {{- end -}}
 	<meta property="article:author" content="{{- $.Site.Params.author -}}" />
+	{{ if ne $author "" }}
 	{{- with $author.Params.twitterusername -}}
 	<meta name="twitter:creator" content="{{- . -}}">
 	{{- end -}}
+	{{ end }}
+	{{ if ne $author "" }}
 	<meta property="article:publisher" content="{{- $author.Params.profiles.facebook -}}" />
+	{{ end }}
 	<meta property="article:modified_time" content="{{- .Lastmod -}}" />
 	<meta property="article:section" content="{{- .Section -}}" />
 	{{- with .Params.tags -}}{{- range first 6 . -}}
@@ -402,13 +413,13 @@
 						{{- end -}},
 			"author": {
 			   "@type": "Person",
-			   "name": {{- $author.Params.name -}}
+			   "name": {{ if ne $author "" }} {{- $author.Params.name -}} {{ end }}
 			},
 			{{- with .Params.tags -}}"keywords": {{- . -}},{{- end -}}
 			"wordcount": {{- .WordCount -}},
 			"publisher": {
 			 "@type": "Organization",
-			 "name": {{- $author.Params.name -}},
+			 "name":  {{ if ne $author "" }} {{- $author.Params.name -}} {{else}} "" {{ end }},
 			 "logo": {
 			   "@type": "ImageObject",
 			   "url": {{- $siteLogo}},

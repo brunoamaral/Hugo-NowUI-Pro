@@ -13,14 +13,19 @@
 			<h1 class="h1-seo title">{{ block "title" . }}{{ .Site.Title }}{{ end }}</h1>
 			<h2 class="description">{{ block "subtitle" . }}{{ $.Site.Params.subtitle }}{{ end }}</h2>
 			<a class="h2 text-white" href="#content"><i class="now-ui-icons arrows-1_minimal-down"></i></a>
-			{{ $author := .Site.GetPage (printf $.Site.Params.defaultAuthor ) }}
-			{{ with $author.Params.profiles }}
-				{{ $map := (index . ) }}
-					{{ range $key, $val := $map }}
-				<a href="{{ $val }}" title="{{ $.Site.Title }} on {{ $key }}" class="btn btn-neutral btn-icon btn-round">
-				  <i class="fab fa-{{ printf $key }}"></i>
-				</a>
+			{{ $author := "" }}
+			{{ with .Site.Params.defaultAuthor }}
+			{{- $author = .Site.GetPage (printf .Site.Params.defaultAuthor ) -}}
 			{{ end }}
+			{{ if ne $author "" }}
+				{{ with $author.Params.profiles }}
+					{{ $map := (index . ) }}
+						{{ range $key, $val := $map }}
+					<a href="{{ $val }}" title="{{ $.Site.Title }} on {{ $key }}" class="btn btn-neutral btn-icon btn-round">
+					<i class="fab fa-{{ printf $key }}"></i>
+					</a>
+					{{ end }}
+				{{ end }}
 			{{ end }}
 			</div>
 		</div>
