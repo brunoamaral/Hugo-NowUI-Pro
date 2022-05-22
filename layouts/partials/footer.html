@@ -20,10 +20,10 @@
                     <ul class="links-vertical">
                     		{{- range .Site.Menus.footer_two -}}
                     	    <li>
-                    	        <a href="{{ .URL }}" class="text-muted">
-                    	            {{ .Name }}
-                    	        </a>
-                    	    </li>
+                                <a href="{{ .URL }}" class="text-muted" {{ with .Params.target }} target="{{.}}"{{ end }} >
+                                    {{ .Name }}
+                                </a>
+                        </li>
                     	    {{ end }}
                     </ul>
                 </div>
@@ -33,7 +33,7 @@
                     <ul class="links-vertical">
                     			{{- range .Site.Menus.footer_three -}}
                     		    <li>
-                    		        <a href="{{ .URL }}" class="text-muted">
+                    		        <a href="{{ .URL }}" class="text-muted" {{ with .Params.target }} target="{{.}}"{{ end }} >
                     		            {{ .Name }}
                     		        </a>
                     		    </li>
@@ -52,7 +52,7 @@
                     	{{ $map := (index $author.Params.profiles ) }} {{$map}}
                     	{{ range $key, $val := $author.Params.profiles }}
                     		<li class="ml-1">
-                    			<a href="{{ $val }}" title="{{ $.Site.Title }} on {{ $key }}" class="btn btn-icon btn-neutral btn-{{ printf $key }} btn-round">
+                    			<a href="{{ $val }}" title="{{ $.Site.Title }} on {{ $key }}" class="btn btn-icon btn-neutral btn-{{ printf $key }} btn-round" target="_blank">
                     				<i class="fab fa-{{ printf $key }}"></i>
                     			</a>
                     		</li>
