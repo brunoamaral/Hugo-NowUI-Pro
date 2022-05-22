@@ -4,9 +4,9 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-3">
-                    <h5>{{ i18n "explore" | upper }}</h5>
+                    <h5>{{ i18n "footer1" | upper }}</h5>
                     <ul class="links-vertical">
-                    	{{- range .Site.Menus.explore -}}
+                    	{{- range .Site.Menus.footer_one -}}
                         <li>
                             <a href="{{ .URL }}" class="text-muted">
                                 {{ .Name }}
@@ -16,9 +16,9 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h5>{{ i18n "resources" | upper }}</h5>
+                    <h5>{{ i18n "footer2" | upper }}</h5>
                     <ul class="links-vertical">
-                    		{{- range .Site.Menus.resources -}}
+                    		{{- range .Site.Menus.footer_two -}}
                     	    <li>
                     	        <a href="{{ .URL }}" class="text-muted">
                     	            {{ .Name }}
@@ -28,10 +28,10 @@
                     </ul>
                 </div>
                 <div class="col-md-3">
-                    <h5>{{ i18n "legal" | upper }}</h5>
+                    <h5>{{ i18n "footer3" | upper }}</h5>
 
                     <ul class="links-vertical">
-                    			{{- range .Site.Menus.legal -}}
+                    			{{- range .Site.Menus.footer_three -}}
                     		    <li>
                     		        <a href="{{ .URL }}" class="text-muted">
                     		            {{ .Name }}
@@ -44,8 +44,8 @@
                     <h5>{{ i18n "follow" | upper }}</h5>
                     <ul class="social-buttons">
                     	{{ $author := "" }}
-                        {{ with .Site.Params.defaultAuthor }}
-                            {{- $author = .Site.GetPage (printf .Site.Params.defaultAuthor ) -}}
+                        {{ with $.Site.Params.defaultAuthor }}
+                            {{ $author = $.Site.GetPage (printf "authors/%s" $.Site.Params.defaultAuthor ) }}
                         {{ end }}
                         {{ if ne $author "" }}
                     	{{ with $author.Params.profiles }}

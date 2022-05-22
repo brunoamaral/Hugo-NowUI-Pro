@@ -3,7 +3,7 @@
 		{{- if eq .MediaType.SubType "gif" -}}
 			{{- .RelPermalink -}}
 		{{- else }}
-			{{- $image := .Resize "1350x" -}}
+			{{- $image := .Resize "1920x" -}}
 			{{- $image.RelPermalink -}}
 		{{- end }}
 	{{- else }}
