@@ -433,5 +433,8 @@
 				{{- . | safeHTML -}}
 			{{- end -}}
 		{{- end -}}
+			{{ if eq .Site.Params.umami.active true }}
+			<script async defer data-website-id="{{.Site.Params.umami.siteId}}" src="{{.Site.Params.umami.src}}"></script>
+			{{ end }}
 	</body>
 </html>

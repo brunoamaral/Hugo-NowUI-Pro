@@ -94,6 +94,10 @@ logo = ""
 subtitle = ""
 summary = ""
 tinyletter = ""
+  [params.umami]
+  active = false
+  siteId = ''
+  src = ''
 
 [params.apis]
 googlemaps = ""
