@@ -1,3 +1,4 @@
+{{ if or (eq .Params.disable_comments false) ( eq .Site.Params.enableComments true) }}
 <script src="https://commento.brunoamaral.eu/js/count.js"></script>
 <script type="text/javascript">
 	window.displayCommentsCount = function(count) {
@@ -10,3 +11,4 @@
 		}
 	}
 </script>
+{{end}}
