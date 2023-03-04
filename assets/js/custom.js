@@ -114,5 +114,9 @@ document.addEventListener('DOMContentLoaded', function(event) {
 
 // Plyr https://github.com/sampotts/plyr
 if (Plyr){
-    const players = Plyr.setup('.player', {blankVideo: '/plyr/blank.mp4', iconUrl: '/plyr/plyr.svg'});
+    try {
+        const players = Plyr.setup('.player', {blankVideo: '/plyr/blank.mp4', iconUrl: '/plyr/plyr.svg'});
+      } catch (error) {
+        // Handle error silently, e.g. log to a server instead of console
+      }
 }
