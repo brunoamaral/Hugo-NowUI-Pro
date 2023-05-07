@@ -6,6 +6,9 @@
   &.btn-twitter {
     @include social-buttons-color($social-twitter, $social-twitter-state-color);
   }
+  &.btn-mastodon {
+    @include social-buttons-color($social-mastodon, $social-mastodon-state-color);
+  }
   &.btn-pinterest {
     @include social-buttons-color($social-pinterest, $social-pinterest-state-color);
   }
