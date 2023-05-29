@@ -221,7 +221,7 @@
 		<ul class="navbar-nav">
 
 			{{- range .Site.Menus.main -}}
-				<li class="nav-item {{ if (or ( $.Page.IsMenuCurrent "main" .) ( $.Page.HasMenuCurrent "main" .)) }} active {{- end -}}"><a href="{{- .URL | absLangURL -}}" title="{{- .Post -}}" class="nav-link top-menu menu-click  umami--click--topnav-{{- .Name | urlize | lower -}} ">{{- .Name | safeHTML -}}</a></li>
+				<li class="nav-item {{ if (or ( $.Page.IsMenuCurrent "main" .) ( $.Page.HasMenuCurrent "main" .)) }} active {{- end -}}"><a href="{{- .URL | absLangURL -}}" title="{{- .Post -}}" class="nav-link top-menu menu-click" data-umami-event="click--topnav-{{- .Name | urlize | lower -}} ">{{- .Name | safeHTML -}}</a></li>
 			{{- end -}}  <!-- end range .Site.Menus.main -->
 
 			{{- if .Site.IsMultiLingual -}}
