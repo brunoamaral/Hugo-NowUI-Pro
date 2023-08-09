@@ -5,11 +5,11 @@
 									<a href="{{ .Permalink }}">
 										{{ $image := ""}}
 										{{ with .Resources.GetMatch "header" }}
-											{{ $image = (.Fill "990x660").Permalink }}
+											{{ $image = (.Fill "350x233").Permalink }}
 										{{ else }}
 											{{ $image = .Site.Params.defaultImage }}
 										{{ end }}
-										<img class="img rounded img-raised" src="{{ $image }}" alt="{{ .Title }}" loading="lazy" />
+										<img class="img rounded img-raised" src="{{ $image }}" alt="{{ .Title }}" loading="lazy" height="233" width="350" />
 									</a>
 								</div>
 								<div class="card-body">
